@@ -1,0 +1,81 @@
+﻿<Window x:Class="Simon.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Simon"
+        mc:Ignorable="d"
+        Title="Simon Game - Test Your Memory!" Height="450" Width="800" Background="DarkBlue">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="Blue"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="Button" x:Key="Gamebutton">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="CountdownPanel" Visibility="Hidden"
+                    Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Panel.ZIndex="5" 
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                    Background="#55ffffff">
+            <TextBlock x:Name="Countdown" Text="3" FontSize="200" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="50"/>
+        </Grid>
+                
+        <StackPanel Grid.Row="1" Grid.Column="0" x:Name="Menu">
+            <Button Content="Start Game" Click="Start_Game_Click"/>
+            <Button Content="Button3"/>
+            <Button Content="Button4"/>
+            <Button Content="Button5"/>
+        </StackPanel>
+
+        
+
+        <Grid Grid.Row="1" Grid.Column="1" Panel.ZIndex="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="button1" Style="{StaticResource Gamebutton}" Click="Button1_Click" Background="Blue"   Grid.Row="0" Grid.Column="0"></Button>
+            <Button x:Name="button2" Style="{StaticResource Gamebutton}" Click="Button2_Click" Background="Green"  Grid.Row="0" Grid.Column="1"></Button>
+            <Button x:Name="button3" Style="{StaticResource Gamebutton}" Click="Button3_Click" Background="Yellow" Grid.Row="0" Grid.Column="2"></Button>
+            <Button x:Name="button4" Style="{StaticResource Gamebutton}" Click="Button4_Click" Background="Orange" Grid.Row="1" Grid.Column="0"></Button>
+            <Button x:Name="button5" Style="{StaticResource Gamebutton}" Click="Button5_Click" Background="Red"    Grid.Row="1" Grid.Column="1"></Button>
+            <Button x:Name="button6" Style="{StaticResource Gamebutton}" Click="Button6_Click" Background="HotPink"   Grid.Row="1" Grid.Column="2"></Button>
+            <Button x:Name="button7" Style="{StaticResource Gamebutton}" Click="Button7_Click" Background="Cyan"   Grid.Row="2" Grid.Column="0"></Button>
+            <Button x:Name="button8" Style="{StaticResource Gamebutton}" Click="Button8_Click" Background="SlateBlue" Grid.Row="2" Grid.Column="1"></Button>
+            <Button x:Name="button9" Style="{StaticResource Gamebutton}" Click="Button9_Click" Background="GreenYellow" Grid.Row="2" Grid.Column="2"></Button>
+        </Grid>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" >
+            <TextBlock x:Name="DeBug" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            <TextBlock x:Name="DeBug1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            <TextBlock x:Name="DeBug2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            <TextBlock x:Name="DeBug3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            <TextBlock x:Name="DeBug4" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            <TextBlock x:Name="DeBug5" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            <TextBlock x:Name="DeBug6" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+        </StackPanel>
+
+        <TextBlock x:Name="ArrayPos" Grid.Row="1" Grid.Column="2" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+        
+    </Grid>
+</Window>
