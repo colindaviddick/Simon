@@ -36,10 +36,7 @@
         </Grid>
                 
         <StackPanel Grid.Row="1" Grid.Column="0" x:Name="Menu">
-            <Button Content="Start Game" Click="Start_Game_Click"/>
-            <Button Content="Play Sequence" Click="Button_Click"/>
-            <Button Content="Button4"/>
-            <Button Content="Button5"/>
+            <Button Content="Start Game" Click="Start_Game_Click" Height="50"/>
         </StackPanel>
 
         
