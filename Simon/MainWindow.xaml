@@ -37,7 +37,7 @@
                 
         <StackPanel Grid.Row="1" Grid.Column="0" x:Name="Menu">
             <Button Content="Start Game" Click="Start_Game_Click"/>
-            <Button Content="Button3"/>
+            <Button Content="Play Sequence" Click="Button_Click"/>
             <Button Content="Button4"/>
             <Button Content="Button5"/>
         </StackPanel>
@@ -58,12 +58,12 @@
             <Button x:Name="button1" Style="{StaticResource Gamebutton}" Click="Button1_Click" Background="Blue"   Grid.Row="0" Grid.Column="0"></Button>
             <Button x:Name="button2" Style="{StaticResource Gamebutton}" Click="Button2_Click" Background="Green"  Grid.Row="0" Grid.Column="1"></Button>
             <Button x:Name="button3" Style="{StaticResource Gamebutton}" Click="Button3_Click" Background="Yellow" Grid.Row="0" Grid.Column="2"></Button>
-            <Button x:Name="button4" Style="{StaticResource Gamebutton}" Click="Button4_Click" Background="Orange" Grid.Row="1" Grid.Column="0"></Button>
+            <!--<Button x:Name="button4" Style="{StaticResource Gamebutton}" Click="Button4_Click" Background="Orange" Grid.Row="1" Grid.Column="0"></Button>
             <Button x:Name="button5" Style="{StaticResource Gamebutton}" Click="Button5_Click" Background="Red"    Grid.Row="1" Grid.Column="1"></Button>
             <Button x:Name="button6" Style="{StaticResource Gamebutton}" Click="Button6_Click" Background="HotPink"   Grid.Row="1" Grid.Column="2"></Button>
             <Button x:Name="button7" Style="{StaticResource Gamebutton}" Click="Button7_Click" Background="Cyan"   Grid.Row="2" Grid.Column="0"></Button>
             <Button x:Name="button8" Style="{StaticResource Gamebutton}" Click="Button8_Click" Background="SlateBlue" Grid.Row="2" Grid.Column="1"></Button>
-            <Button x:Name="button9" Style="{StaticResource Gamebutton}" Click="Button9_Click" Background="GreenYellow" Grid.Row="2" Grid.Column="2"></Button>
+            <Button x:Name="button9" Style="{StaticResource Gamebutton}" Click="Button9_Click" Background="GreenYellow" Grid.Row="2" Grid.Column="2"></Button>-->
         </Grid>
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" >
             <TextBlock x:Name="DeBug" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
