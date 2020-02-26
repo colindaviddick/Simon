@@ -24,14 +24,12 @@ namespace Simon
     public partial class MainWindow : Window
     {
         private MediaPlayer mediaPlayer = new MediaPlayer();
-
-        // Is it the player hitting buttons or the CPU?
         bool playingSequence = true;
-
         int arrayPosition = 0;
         int arrayLength = 2;
         int arrayFullLength = 10;
-        int[] gameArray = new int[10];
+        //int[] gameArray = new int[10];
+        int[] gameArray = { 1, 2, 3, 1, 2, 3, 1, 2, 3, 1 };
         bool sandboxMode = false;
         int waitTime = 500;
         static Random r = new Random();
@@ -46,7 +44,6 @@ namespace Simon
                                         (new Uri(@"C:\Users\User\source\repos\Simon\Simon\sounds\8.wav", UriKind.RelativeOrAbsolute)),
                                         (new Uri(@"C:\Users\User\source\repos\Simon\Simon\sounds\9.wav", UriKind.RelativeOrAbsolute))};
 
-        #region
         public MainWindow()
         {
             InitializeComponent();
@@ -137,17 +134,13 @@ namespace Simon
 
         async Task TakeInput(int i)
         {
-            if (!sandboxMode)
-            {
                 void Success()
                 {
                     if (!playingSequence)
                     {
-                        arrayLength++;
-                        gameArray[arrayPosition + 1] = r.Next(1, 3);
                         arrayPosition = 0;
-                        PlaySequence();
                         playingSequence = true;
+                        PlaySequence();
                     }
                     else
                     {
@@ -157,7 +150,7 @@ namespace Simon
                 }
                 async Task GameOver()
                 {
-                    PlaySound(0);
+                    //PlaySound(0);
                     CountdownPanel.Visibility = Visibility.Visible;
                     CountdownPanel.Background = Brushes.Red;
                     await Wait(waitTime);
@@ -165,312 +158,119 @@ namespace Simon
                     CountdownPanel.Background = Brushes.White;
                 }
 
-                switch (i)
-                {
-                    case 1:
-                        if (gameArray[arrayPosition] == 1)
-                        {
-                            PlaySound(1);
-                            button1.Background = Brushes.LightBlue;
-                            Wait(waitTime);
-                            button1.Background = Brushes.Blue;
-                            UpdateArrayPosition();
-                            if (arrayPosition == (arrayLength - 1))
-                            {
-                                Success();
-                            }
-                            break;
-                        }
-                        else
-                        {
-                            GameOver();
-                            break;
-                        }
-                    case 2:
-                        if (gameArray[arrayPosition] == 2)
-                        {
-                            PlaySound(2);
-                            button2.Background = Brushes.LightGreen;
-                            Wait(waitTime);
-                            button2.Background = Brushes.Green;
-                            UpdateArrayPosition();
-                            if (arrayPosition == (arrayLength - 1))
-                            {
-                                Success();
-                            }
-                            break;
-                        }
-                        else
-                        {
-                            GameOver();
-                            break;
-                        }
-                    case 3:
-                        if (gameArray[arrayPosition] == 3)
-                        {
-                            PlaySound(3);
-                            button3.Background = Brushes.LightYellow;
-                            Wait(waitTime);
-                            button3.Background = Brushes.Yellow;
-                            UpdateArrayPosition();
-                            if (arrayPosition == (arrayLength - 1))
-                            {
-                                Success();
-                            }
-                            break;
-                        }
-                        else
-                        {
-                            GameOver();
-                            break;
-                        }
-                }
-
-                #region Commented out for testing
-                //        case 4:
-                //            if (gameArray[arrayPosition] == 4)
-                //            {
-                //                PlaySound(4);
-                //                button4.Background = Brushes.PaleGoldenrod;
-                //                Wait(waitTime);
-                //                button4.Background = Brushes.Orange;
-                //                if (arrayPosition == (arrayLength - 1))
-                //                {
-                //                    MessageBox.Show("Finished");
-                //                }
-                //                break;
-                //            }
-                //            else
-                //            {
-                //                GameOver();
-                //                break;
-                //            }
-                //        case 5:
-                //            if (gameArray[arrayPosition] == 5)
-                //            {
-                //                PlaySound(5);
-                //                button5.Background = Brushes.LightSalmon;
-                //                Wait(waitTime);
-                //                button5.Background = Brushes.Red;
-                //                if (arrayPosition == (arrayLength - 1))
-                //                {
-                //                    MessageBox.Show("Finished");
-                //                }
-                //                break;
-                //            }
-                //            else
-                //            {
-                //                GameOver();
-                //                break;
-                //            }
-                //        case 6:
-                //            if (gameArray[arrayPosition] == 6)
-                //            {
-                //                PlaySound(6);
-                //                button6.Background = Brushes.LightPink;
-                //                Wait(waitTime);
-                //                button6.Background = Brushes.HotPink;
-                //                if (arrayPosition == (arrayLength - 1))
-                //                {
-                //                    MessageBox.Show("Finished");
-                //                }
-                //                break;
-                //            }
-                //            else
-                //            {
-                //                GameOver();
-                //                break;
-                //            }
-                //        case 7:
-                //            if (gameArray[arrayPosition] == 7)
-                //            {
-                //                PlaySound(7);
-                //                button7.Background = Brushes.LightCyan;
-                //                Wait(waitTime);
-                //                button7.Background = Brushes.Cyan;
-                //                if (arrayPosition == (arrayLength - 1))
-                //                {
-                //                    MessageBox.Show("Finished");
-                //                }
-                //                break;
-                //            }
-
-                //            else
-                //            {
-                //                GameOver();
-                //                break;
-                //            }
-                //        case 8:
-                //            if (gameArray[arrayPosition] == 8)
-                //            {
-                //                PlaySound(8);
-                //                button8.Background = Brushes.MediumPurple;
-                //                Wait(waitTime);
-                //                button8.Background = Brushes.SlateBlue;
-                //                if (arrayPosition == (arrayLength - 1))
-                //                {
-                //                    MessageBox.Show("Finished");
-                //                }
-                //                break;
-                //            }
-                //            else
-                //            {
-                //                GameOver();
-                //                break;
-                //            }
-                //        case 9:
-                //            if (gameArray[arrayPosition] == 9)
-                //            {
-                //                PlaySound(9);
-                //                button9.Background = Brushes.PaleGoldenrod;
-                //                Wait(waitTime);
-                //                button9.Background = Brushes.GreenYellow;
-                //                if (arrayPosition == (arrayLength - 1))
-                //                {
-                //                    MessageBox.Show("Finished");
-                //                }
-                //                break;
-                //            }
-                //            else
-                //            {
-                //                GameOver();
-                //                break;
-                //            }
-                //    }
-                //}
-
-                if (sandboxMode)
-                {
-                    switch (i)
+            switch (i)
+            {
+                case 1:
+                    if (gameArray[arrayPosition] == 1)
                     {
-                        case 1:
-                            PlaySound(1);
-                            button1.Background = Brushes.LightBlue;
-                            Wait(waitTime);
-                            button1.Background = Brushes.Blue;
-                            arrayPosition = 0;
-                            break;
-                        case 2:
-                            PlaySound(2);
-                            button2.Background = Brushes.LightGreen;
-                            Wait(waitTime);
-                            button2.Background = Brushes.Green;
-                            arrayPosition = 0;
-                            break;
-                        case 3:
-                            PlaySound(3);
-                            button3.Background = Brushes.LightYellow;
-                            Wait(waitTime);
-                            button3.Background = Brushes.Yellow;
-                            arrayPosition = 0;
-                            break;
+                        PlaySound(1);
+                        button1.Background = Brushes.LightBlue;
+                        Wait(waitTime);
+                        button1.Background = Brushes.Blue;
+                        UpdateArrayPosition();
+                        //if (arrayPosition == (arrayLength - 1))
+                        //{
+                        //    Success();
+                        //    break;
+                        //}
+                        break;
                     }
-                }
-                //        case 4:
-                //            PlaySound(4);
-                //            button4.Background = Brushes.PaleGoldenrod;
-                //            Wait(waitTime);
-                //            button4.Background = Brushes.Orange;
-                //            arrayPosition = 0;
-                //            break;
-                //        case 5:
-                //            PlaySound(5);
-                //            button5.Background = Brushes.LightSalmon;
-                //            Wait(waitTime);
-                //            button5.Background = Brushes.Red;
-                //            arrayPosition = 0;
-                //            break;
-                //        case 6:
-                //            PlaySound(6);
-                //            button6.Background = Brushes.LightPink;
-                //            Wait(waitTime);
-                //            button6.Background = Brushes.HotPink;
-                //            arrayPosition = 0;
-                //            break;
-                //        case 7:
-                //            PlaySound(7);
-                //            button7.Background = Brushes.LightCyan;
-                //            Wait(waitTime);
-                //            button7.Background = Brushes.Cyan;
-                //            arrayPosition = 0;
-                //            break;
-                //        case 8:
-                //            PlaySound(8);
-                //            button8.Background = Brushes.MediumPurple;
-                //            Wait(waitTime);
-                //            button8.Background = Brushes.SlateBlue;
-                //            arrayPosition = 0;
-                //            break;
-                //        case 9:
-                //            PlaySound(9);
-                //            button9.Background = Brushes.PaleGoldenrod;
-                //            Wait(waitTime);
-                //            button9.Background = Brushes.GreenYellow;
-                //            arrayPosition = 0;
-                //            break;
-            
-            
+                    else
+                    {
+                        GameOver();
+                        break;
+                    }
+                case 2:
+                    if (gameArray[arrayPosition] == 2)
+                    {
+                        PlaySound(2);
+                        button2.Background = Brushes.LightGreen;
+                        Wait(waitTime);
+                        button2.Background = Brushes.Green;
+                        UpdateArrayPosition();
+                        //if (arrayPosition == (arrayLength - 1))
+                        //{
+                        //    Success();
+                        //    break;
+                        //}
+                        break;
+                    }
+                    else
+                    {
+                        GameOver();
+                        break;
+                    }
+                case 3:
+                    if (gameArray[arrayPosition] == 3)
+                    {
+                        PlaySound(3);
+                        button3.Background = Brushes.LightYellow;
+                        Wait(waitTime);
+                        button3.Background = Brushes.Yellow;
+                        UpdateArrayPosition();
+                        //if (arrayPosition == (arrayLength - 1))
+                        //{
+                        //    Success();
+                        //    break;
+                        //}
+                        break;
+                    }
+                    else
+                    {
+                        GameOver();
+                        break;
+                    }
+            }
         }
-    }
 
-    void CreateArray()
-    {
-        for (int i = 0; i < arrayFullLength; i++)
+        void CreateArray()
         {
-            gameArray[i] = r.Next(0, 3);
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    gameArray[i] = r.Next(1, 4);
+            //}
 
+            ShowCurrentArray();
         }
-    }
 
-    async void Start_Game_Click(object sender, RoutedEventArgs e)
-    {
-        CreateArray();
-        //CountdownPanel.Visibility = Visibility.Visible;
-        //PopulateGameArray();
-        ArrayPos.Text = arrayPosition.ToString();
-        //Countdown.Text = "3";
-        //await Wait(1000);
-        //Countdown.Text = "2";
-        //await Wait(1000);
-        //Countdown.Text = "1";
-        //await Wait(1000);
-        //Countdown.Text = "Go!";
-        //await Wait(1000);
-        //CountdownPanel.Visibility = Visibility.Hidden;
-        //Countdown.Visibility = Visibility.Hidden;
-        PlaySequence();
-    }
-    #endregion
-
-    // private void PopulateGameArray()
-    // {
-    //     for (int i = 0; i < maxLevels; i++)
-    //     {
-    //         gameArray[i] = r.Next(1, 10);
-    //     }
-    // 
-    //     DeBug.Text = gameArray[0].ToString();
-    //     DeBug1.Text = gameArray[1].ToString();
-    //     DeBug2.Text = gameArray[2].ToString();
-    //     DeBug3.Text = gameArray[3].ToString();
-    //     DeBug4.Text = gameArray[4].ToString();
-    //     DeBug5.Text = gameArray[5].ToString();
-    // }
-    #endregion
-
-    private void PlaySequence()
-    {
-        for (int i = 0; i < (arrayLength); i++)
+        void ShowCurrentArray()
         {
-            TakeInput(gameArray[i]);
+            string current = (gameArray[0].ToString() +
+                        gameArray[1].ToString() +
+                        gameArray[2].ToString() +
+                        gameArray[3].ToString() +
+                        gameArray[4].ToString() +
+                        gameArray[5].ToString() +
+                        gameArray[6].ToString() +
+                        gameArray[7].ToString() +
+                        gameArray[8].ToString() +
+                        gameArray[9].ToString());
+            DeBug.Text = current;
         }
-        arrayPosition = 0;
-    }
 
-    private void UpdateArrayPosition()
-    {
-        arrayPosition++;
-        ArrayPos.Text = arrayPosition.ToString();
+        async void Start_Game_Click(object sender, RoutedEventArgs e)
+        {
+            arrayPosition = 0;
+            CreateArray();
+            UpdateArrayPosition();
+            PlaySequence();
+        }
+
+
+        private void PlaySequence()
+        {
+            for (int i = 0; i < (arrayLength - 1); i++)
+            {
+                TakeInput(gameArray[i]);
+            }
+            arrayPosition = 0;
+            UpdateArrayPosition();
+        }
+
+        private void UpdateArrayPosition()
+        {
+            arrayPosition++;
+            ArrayPos.Text = arrayPosition.ToString();
+        }
     }
-}
 }

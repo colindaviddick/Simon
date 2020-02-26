@@ -64,15 +64,12 @@
         </Grid>
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" >
             <TextBlock x:Name="DeBug" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-            <TextBlock x:Name="DeBug1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-            <TextBlock x:Name="DeBug2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-            <TextBlock x:Name="DeBug3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-            <TextBlock x:Name="DeBug4" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-            <TextBlock x:Name="DeBug5" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-            <TextBlock x:Name="DeBug6" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
         </StackPanel>
-
-        <TextBlock x:Name="ArrayPos" Grid.Row="1" Grid.Column="2" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            <TextBlock FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" TextWrapping="Wrap" TextAlignment="Center">Current Position in Array</TextBlock>
+            <TextBlock/>
+            <TextBlock x:Name="ArrayPos" Grid.Row="1" Grid.Column="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White">No information</TextBlock>
+        </StackPanel>
         
     </Grid>
 </Window>
